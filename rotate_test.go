@@ -1,4 +1,4 @@
-package writers
+package log
 
 import (
 	"os"

@@ -1,4 +1,4 @@
-package formatters
+package log
 
 import (
 	"bytes"
@@ -7,12 +7,10 @@ import (
 	"strconv"
 	"sync"
 	"time"
-
-	"github.com/angrygiraffe/go-log"
 )
 
-// BizFormatter is a text line formatter specifical for bizbase
-type BizFormatter struct {
+// TextFormatter is a text line formatter
+type TextFormatter struct {
 	AppName    string
 	TimeFormat string
 
@@ -23,8 +21,8 @@ type BizFormatter struct {
 	isterm bool
 }
 
-// Format implements log.Formatter
-func (f *BizFormatter) Format(level log.Level, msg string, logger *log.Logger) []byte {
+// Format implements Formatter
+func (f *TextFormatter) Format(level Level, msg string, logger *Logger) []byte {
 	// output format: DATE LEVEL HOST APP PID file:line message
 	// 2001-10-10T12:00:00,000+0800 INFO web-1 app 1234 main/main.go:1234 message ...
 
@@ -35,7 +33,7 @@ func (f *BizFormatter) Format(level log.Level, msg string, logger *log.Logger) [
 		f.app = []byte(f.AppName)
 
 		if f.TimeFormat == "" {
-			f.TimeFormat = "[2006-01-02 15:04:05.000]"
+			f.TimeFormat = "2006-01-02T15:04:05.000-0700"
 		}
 
 		f.isterm = IsTerminal(logger.Out)
