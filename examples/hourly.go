@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/subchen/go-log"
-	"github.com/subchen/go-log/formatters"
-	"github.com/subchen/go-log/writers"
+	"github.com/angrygiraffe/go-log"
+	"github.com/angrygiraffe/go-log/formatters"
+	"github.com/angrygiraffe/go-log/writers"
 	"time"
 )
 

@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/subchen/go-log"
+	"github.com/angrygiraffe/go-log"
 )
 
 // JSONFormatter is a json formatter

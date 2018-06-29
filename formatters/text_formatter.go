@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/subchen/go-log"
+	"github.com/angrygiraffe/go-log"
 )
 
 // TextFormatter is a text line formatter

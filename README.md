@@ -1,10 +1,10 @@
 go-log
 ================
 
-[![GoDoc](https://godoc.org/github.com/subchen/go-log?status.svg)](https://godoc.org/github.com/subchen/go-log)
-[![Build Status](https://travis-ci.org/subchen/go-log.svg?branch=master)](https://travis-ci.org/subchen/go-log)
-[![Coverage Status](https://coveralls.io/repos/github/subchen/go-log/badge.svg?branch=master)](https://coveralls.io/github/subchen/go-log?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/subchen/go-log)](https://goreportcard.com/report/github.com/subchen/go-log)
+[![GoDoc](https://godoc.org/github.com/angrygiraffe/go-log?status.svg)](https://godoc.org/github.com/angrygiraffe/go-log)
+[![Build Status](https://travis-ci.org/angrygiraffe/go-log.svg?branch=master)](https://travis-ci.org/angrygiraffe/go-log)
+[![Coverage Status](https://coveralls.io/repos/github/angrygiraffe/go-log/badge.svg?branch=master)](https://coveralls.io/github/angrygiraffe/go-log?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/angrygiraffe/go-log)](https://goreportcard.com/report/github.com/angrygiraffe/go-log)
 [![License](http://img.shields.io/badge/License-Apache_2-red.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
 Logging package similar to log4j for the Golang.
@@ -22,7 +22,7 @@ Installation
 ---------------
 
 ```bash
-$ go get github.com/subchen/go-log
+$ go get github.com/angrygiraffe/go-log
 ```
 
 Usage
@@ -34,7 +34,7 @@ package main
 import (
 	"os"
 	"errors"
-	"github.com/subchen/go-log"
+	"github.com/angrygiraffe/go-log"
 )
 
 func main() {
@@ -55,8 +55,8 @@ Default log to console, you can set `Logger.Out` to set a file writer into log.
 
 ```go
 import (
-	"github.com/subchen/go-log"
-	"github.com/subchen/go-log/writers"
+	"github.com/angrygiraffe/go-log"
+	"github.com/angrygiraffe/go-log/writers"
 )
 
 log.Default.Out = &writers.FixedSizeFileWriter{
@@ -106,8 +106,8 @@ io.MultiWriter(
 
 ```go
 import (
-	"github.com/subchen/go-log"
-	"github.com/subchen/go-log/formatters"
+	"github.com/angrygiraffe/go-log"
+	"github.com/angrygiraffe/go-log/formatters"
 )
 
 log.Default.Formatter = new(formatters.TextFormatter)
@@ -118,7 +118,7 @@ log.Default.Formatter = new(formatters.TextFormatter)
 
 ```go
 import (
-	"github.com/subchen/go-log"
+	"github.com/angrygiraffe/go-log"
 )
 
 func main() {

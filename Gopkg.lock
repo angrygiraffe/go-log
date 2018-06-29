@@ -2,19 +2,10 @@
 
 
 [[projects]]
-  name = "github.com/subchen/go-log"
-  packages = [
-    ".",
-    "formatters"
-  ]
-  revision = "f16df80d3e9a3ad718220a605d358fd2ae3588b1"
-  version = "v3.0.0"
-
-[[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
-  revision = "1a580b3eff7814fc9b40602fd35256c63b50f491"
+  revision = "a49355c7e3f8fe157a85be2f77e6e269a0f89602"
 
 [[projects]]
   branch = "master"
@@ -23,11 +14,11 @@
     "unix",
     "windows"
   ]
-  revision = "7c87d13f8e835d2fb3a70a2912c811ed0c1d241b"
+  revision = "7138fd3d9dc8335c567ca206f4333fb75eb05d56"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "a5aba1cac2d4e359654fc497a21daf667cc2a4a7793e5022501a77c73a8c0912"
+  inputs-digest = "5d23260104de1fc6bee0a07cb064f1b57081935b7958acdb627d18dd9c80ce02"
   solver-name = "gps-cdcl"
   solver-version = 1
