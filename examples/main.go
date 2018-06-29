@@ -11,7 +11,7 @@ func main() {
 	log.Info("hello", 123)
 	log.Warn("hello", 123)
 
-	log.Default.Formatter = new(formatters.TextFormatter)
+	log.Default.Formatter = new(formatters.BizFormatter)
 	log.Infoln("hello", "world")
 	log.Warnln("hello", "world")
 

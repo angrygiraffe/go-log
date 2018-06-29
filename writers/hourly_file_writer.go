@@ -11,24 +11,24 @@ import (
 	"time"
 )
 
-// DailyFileWriter create new log for every day
-type DailyFileWriter struct {
+// HourlyFileWriter create new log for every day
+type HourlyFileWriter struct {
 	Name     string
 	MaxCount int
 	MaxSize  int64
 
-	file        *os.File
-	nextDayTime int64
-	currentSize int64
+	file         *os.File
+	nextHourTime int64
+	currentSize  int64
 }
 
 // Write implements io.Writer
-func (w *DailyFileWriter) Write(p []byte) (n int, err error) {
+func (w *HourlyFileWriter) Write(p []byte) (n int, err error) {
 	now := time.Now()
 
 	if w.file == nil {
 		w.openFile(&now)
-	} else if now.Unix() >= w.nextDayTime || w.currentSize > w.MaxSize {
+	} else if now.Unix() >= w.nextHourTime || w.currentSize > w.MaxSize {
 		w.file.Close()
 		w.openFile(&now)
 	}
@@ -37,8 +37,8 @@ func (w *DailyFileWriter) Write(p []byte) (n int, err error) {
 	return w.file.Write(p)
 }
 
-func (w *DailyFileWriter) openFile(now *time.Time) (err error) {
-	name := fmt.Sprintf("%s.%s", w.Name, now.Format("20060102"))
+func (w *HourlyFileWriter) openFile(now *time.Time) (err error) {
+	name := fmt.Sprintf("%s.%s", w.Name, now.Format("2006010215"))
 
 	// remove symbol link if exist
 	os.Remove(w.Name)
@@ -65,14 +65,16 @@ func (w *DailyFileWriter) openFile(now *time.Time) (err error) {
 		return err
 	}
 
-	year, month, day := now.Date()
-	w.nextDayTime = time.Date(year, month, day+1, 0, 0, 0, 0, now.Location()).Unix()
+	nextHourTime := now.Add(time.Hour)
+	year, month, day := nextHourTime.Date()
+	hour := nextHourTime.Hour()
+	w.nextHourTime = time.Date(year, month, day, hour, 0, 0, 0, now.Location()).Unix()
 
 	return nil
 }
 
 // clean old files
-func (w *DailyFileWriter) cleanFiles() {
+func (w *HourlyFileWriter) cleanFiles() {
 	dir := path.Dir(w.Name)
 
 	fileList, err := ioutil.ReadDir(dir)
