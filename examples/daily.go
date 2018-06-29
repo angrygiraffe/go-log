@@ -2,8 +2,6 @@ package main
 
 import (
 	"github.com/angrygiraffe/go-log"
-	"github.com/angrygiraffe/go-log/formatters"
-	"github.com/angrygiraffe/go-log/writers"
 	"time"
 )
 
@@ -11,14 +9,14 @@ func main() {
 	log.Info("hello", 123)
 	log.Warn("hello", 123)
 
-	log.Default.Formatter = new(formatters.BizFormatter)
+	log.Default.Formatter = new(log.BizFormatter)
 	log.Infoln("hello", "world")
 	log.Warnln("hello", "world")
 
 	newLog := &log.Logger{
 		Level:     log.INFO,
-		Formatter: new(formatters.BizFormatter),
-		Out: &writers.DailyFileWriter{
+		Formatter: new(log.BizFormatter),
+		Out: &log.DailyFileWriter{
 			Name:     "/tmp/test.log",
 			MaxCount: 5,
 			MaxSize:  1000,
